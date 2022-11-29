@@ -1,0 +1,23 @@
+@import './variables';
+@import '../src/lib/shared/shared';
+
+.#{$id} {
+    &__Fesidediv {
+        width: 100%;
+        max-width: 443px;
+        margin-bottom: 66px;
+      
+        h1{
+            color: #19288A;
+            font-weight: 400;
+            font-size: 46px;
+            line-height: 54px;
+            text-align: left;
+        }
+    }
+
+    
+}
+html body .FeSecondbanner>.container.#{$id}__container{
+    align-items: flex-start;
+}

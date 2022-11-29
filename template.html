@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="x-ua-compatible"
+        content="ie=edge" />
+
+  <link rel="shortcut icon"
+        type="image/x-icon"
+        href="https://www.funnelenvy.com/wp-content/uploads/40x40FunnelEnvy.png" />
+  <title>
+    <%= htmlWebpackPlugin.options.title
+        %>
+  </title>
+  <script>
+
+  </script>
+</head>
+
+<body>
+  <div id="root">
+    <style>
+      body {
+        margin: 0
+      }
+
+      main {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        color: #fff;
+        text-align: center;
+        background: url(https://www.funnelenvy.com/wp-content/uploads/funnel_envy_home_hero4_4970px-1-e1622465091670-1-300x72.png);
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+
+      }
+
+      main>h1 {
+        animation: focus-in-expand 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+      }
+
+
+      @keyframes focus-in-expand {
+        0% {
+          letter-spacing: -0.5em;
+          filter: blur(12px);
+          opacity: 0;
+        }
+
+        100% {
+          filter: blur(0px);
+          opacity: 1;
+        }
+      }
+    </style>
+    <main>
+      <h1>A/B test build tool successfully initiated...</h1>
+      <div class="Funnelenvy">
+        <span>Please copy and paste the code from scriptLoader.js in your userjs extension to get start.</span>
+      </div>
+    </main>
+  </div>
+</body>
+
+</html>

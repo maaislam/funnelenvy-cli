@@ -1,0 +1,8 @@
+@import './variables';
+@import '../src/lib/shared/shared.scss';
+
+.#{$id} {
+    &__test {
+        display: block;
+    }
+}
