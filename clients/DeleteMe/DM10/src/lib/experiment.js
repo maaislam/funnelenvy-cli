@@ -18,11 +18,11 @@ export default () => {
   //-----------------------------
   //...
   const headlineConfig = {
-    6492391637: 'The Best Personal Data Removal Company 2022',
-    6492391634: 'Opt Out from Data Broker Sites',
-    6492391643: 'The Most Trusted Personal Data Removal Company',
-    6495930156: 'Remove Personal Information from the Internet Now',
-    6492391646: 'Remove Personal Information from Google',
+    6492391637: 'The best personal data removal company 2022',
+    6492391634: 'Opt out from data broker sites',
+    6492391643: 'The most trusted personal data removal company',
+    6495930156: 'Remove personal information from the Internet now',
+    6492391646: 'Remove personal information from Google',
     6492391628: '',
     10652580362: ''
   };

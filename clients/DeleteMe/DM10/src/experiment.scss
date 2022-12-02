@@ -5,14 +5,26 @@
     &__Fesidediv {
         width: 100%;
         max-width: 443px;
-        margin-bottom: 66px;
+        margin: 0 auto 66px;
+
+        @include media-query(md){
+            margin-bottom: 33px;
+        }
+        @include media-query(sm){
+            margin-bottom: 49px;
+        }
       
         h1{
             color: #19288A;
             font-weight: 400;
-            font-size: 46px;
+            font-size: 32px;
             line-height: 54px;
             text-align: left;
+
+            // @include media-query(md){
+            //     font-size: 26px;
+            //     line-height:44px;
+            // }
         }
     }
 
