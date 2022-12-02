@@ -1,3 +1,4 @@
+/*eslint-disable global-require */
 /*eslint-disable no-console */
 /*eslint-disable object-curly-newline */
 /*eslint-disable no-shadow */
@@ -9,37 +10,41 @@ const fse = require('fs-extra');
 const prompt = require('prompt');
 const path = require('path');
 
-const { sharedJsContent, createFile, createExpSchema } = require('./cliUtils');
+const expConfigPath = path.resolve(__dirname, '../process/experimentConfig.js');
 
-prompt.start();
+fse.ensureFile(expConfigPath).then(() => {
+  const { sharedJsContent, createFile, createExpSchema } = require('./cliUtils');
 
-prompt.get(createExpSchema, (err, result) => {
-  if (err) {
-    return onErr(err);
-  }
+  prompt.start();
 
-  const { clientName, experimentId, setVarFlag } = result;
+  prompt.get(createExpSchema, (err, result) => {
+    if (err) {
+      return onErr(err);
+    }
 
-  const dir = path.resolve(__dirname, `../clients/${clientName}/${experimentId}/`);
+    const { clientName, experimentId, setVarFlag } = result;
 
-  const content = sharedJsContent(experimentId, setVarFlag, clientName);
+    const dir = path.resolve(__dirname, `../clients/${clientName}/${experimentId}/`);
 
-  fse
-    .ensureDir(dir)
-    .then(
-      () => fse.pathExists(`${dir}/src`) //=> false
-    )
-    .then((exists) => {
-      if (exists) return;
-      return fse.copy('./template/', dir);
-      //console.log("Build success! -- now 'npm start' to start development");
-    })
-    .then(() => {
-      createFile(`${dir}/src/lib/shared/shared.js`, content);
-      createFile(path.resolve(__dirname, '../process/experimentConfig.js'), content);
-    })
-    .then(() => createFile(`${dir}/src/lib/shared/shared.scss`, `$id: '${experimentId}';`))
-    .catch((err) => console.error(err));
+    const content = sharedJsContent(experimentId, setVarFlag, clientName);
+
+    fse
+      .ensureDir(dir)
+      .then(
+        () => fse.pathExists(`${dir}/src`) //=> false
+      )
+      .then((exists) => {
+        if (exists) return;
+        return fse.copy('./template/', dir);
+        //console.log("Build success! -- now 'npm start' to start development");
+      })
+      .then(() => {
+        createFile(`${dir}/src/lib/shared/shared.js`, content);
+        createFile(expConfigPath, content);
+      })
+      .then(() => createFile(`${dir}/src/lib/shared/shared.scss`, `$id: '${experimentId}';`))
+      .catch((err) => console.error(err));
+  });
 });
 
 function onErr(err) {

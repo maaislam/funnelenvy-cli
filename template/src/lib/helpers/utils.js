@@ -25,10 +25,10 @@ export const mergeObjects = (target, source) => {
       targetValue && typeof targetValue === 'object' && !(targetValue instanceof Array);
 
     if (isObject) {
-      // If object, call function recursively to overwrite subproperties individually
+      //If object, call function recursively to overwrite subproperties individually
       merged[key] = mergeObjects(targetValue, sourceValue);
     } else {
-      // Overwrite default with value from options
+      //Overwrite default with value from options
       merged[key] = sourceValue;
     }
   });
@@ -52,7 +52,7 @@ export const pollerLite = (conditions, callback, userOptions) => {
     timeout: 0
   };
 
-  // Overwrite any default options with user supplied options
+  //Overwrite any default options with user supplied options
   if (userOptions) {
     options = mergeObjects(options, userOptions);
   }
@@ -111,7 +111,7 @@ export const pollerLite = (conditions, callback, userOptions) => {
    * @param {boolean} skipWait Bypasses the wait period if true
    */
   const pollForCondition = (condition, waitTime, skipWait) => {
-    // End recursion if timeout has passed
+    //End recursion if timeout has passed
     if (timeout && isTimedOut()) {
       return false;
     }
@@ -121,7 +121,7 @@ export const pollerLite = (conditions, callback, userOptions) => {
     if (result) {
       successfulConditions.push(result);
       if (allConditionsPassed()) {
-        // Run the callback and pass the results as the first argument
+        //Run the callback and pass the results as the first argument
         callback(successfulConditions);
       }
     } else {
@@ -134,9 +134,9 @@ export const pollerLite = (conditions, callback, userOptions) => {
     }
   };
 
-  // Start polling for all conditions
+  //Start polling for all conditions
   for (let i = 0; i < conditions.length; i += 1) {
-    if (typeof conditions[i] != 'string' && typeof conditions[i] != 'function') {
+    if (typeof conditions[i] !== 'string' && typeof conditions[i] !== 'function') {
       throw 'Every item in the poller array should be a function or a string';
     }
     pollForCondition(conditions[i], wait, true);
