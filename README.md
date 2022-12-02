@@ -1,4 +1,6 @@
-# 📦 A/B Testing Development Tool
+![alt text](https://www.funnelenvy.com/wp-content/uploads/logo.png)
+
+# A/B Test Development Tool
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
@@ -14,13 +16,13 @@ npm i
 
 ## How to
 
-### Create new Experiment
+### :hammer_and_wrench: Create new Experiment
 
 ```bash
 npm run experiment-create
 ```
 
-### Development server
+### :rocket: Development server
 
 ```bash
 npm start
@@ -30,19 +32,19 @@ npm start
 
 copy content from scriptLoader.js to userjs extension.
 
-### Production build
+### :package: Production build
 
 ```bash
 npm run build
 ```
 
-### Production build -- unminified
+### :point_up: Production build -- unminified
 
 ```bash
 npm run build-u
 ```
 
-### Git Commits
+### :tada: Git Commits
 
 ```bash
 git commit -m "[Test ID] Name of commit message."
